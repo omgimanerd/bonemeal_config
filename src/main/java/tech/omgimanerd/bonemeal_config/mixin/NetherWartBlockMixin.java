@@ -13,21 +13,23 @@ import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+import tech.omgimanerd.bonemeal_config.Config;
+
 @Mixin(NetherWartBlock.class)
 @Implements(@Interface(iface = BonemealableBlock.class, prefix = "bonemealable$"))
-public class NetherWartBlockMixin {
+public class NetherWartBlockMixin implements BonemealableBlock {
 
-  boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState blockState) {
-    return true;
+  public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState blockState) {
+    return Config.NETHER_WART_ENABLED;
   }
 
-  boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState blockState, boolean isClient) {
-
-    return true;
-    // return blockState.getValue(NetherWartBlock.AGE) < 3;
+  public boolean isValidBonemealTarget(LevelReader reader, BlockPos pos, BlockState blockState, boolean isClient) {
+    return blockState.getValue(NetherWartBlock.AGE) < 3;
   }
 
-  void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState blockState) {
-    blockState.setValue(NetherWartBlock.AGE, 3);
+  public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState blockState) {
+    // Advances it one growth stage.
+    int newAge = Math.min(3, blockState.getValue(NetherWartBlock.AGE) + 1);
+    level.setBlockAndUpdate(pos, blockState.setValue(NetherWartBlock.AGE, newAge));
   }
 }
