@@ -12,29 +12,33 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.NetherWartBlock;
+import net.minecraft.world.level.block.SugarCaneBlock;
 import net.minecraft.world.level.block.state.BlockState;
-
+import tech.omgimanerd.bonemeal_config.BonemealConfig;
 import tech.omgimanerd.bonemeal_config.Config;
 
-@Mixin(NetherWartBlock.class)
+@Mixin(SugarCaneBlock.class)
 @Implements(@Interface(iface = BonemealableBlock.class, prefix = "bonemealable$"))
-public class NetherWartBlockMixin implements BonemealableBlock {
+public class SugarCaneBlockMixin implements BonemealableBlock {
 
   public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
       @Nonnull BlockState blockState) {
-    return Config.NETHER_WART_ENABLED;
+    return Config.SUGAR_CANE_ENABLED;
   }
 
-  public boolean isValidBonemealTarget(@Nonnull LevelReader reader, @Nonnull BlockPos pos,
+  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
       @Nonnull BlockState blockState, boolean isClient) {
-    return blockState.getValue(NetherWartBlock.AGE) < 3;
+    BonemealConfig.LOGGER.debug("{}", pos);
+    return true;
   }
 
   public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
       @Nonnull BlockState blockState) {
-    // Advances it one growth stage.
-    int newAge = Math.min(3, blockState.getValue(NetherWartBlock.AGE) + 1);
-    level.setBlockAndUpdate(pos, blockState.setValue(NetherWartBlock.AGE, newAge));
+    // TODO Auto-generated method stub
   }
+
+  private int getSugarcaneHeight(@Nonnull BlockPos pos) {
+    return 0;
+  }
+
 }

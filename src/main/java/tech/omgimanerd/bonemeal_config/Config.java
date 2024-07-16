@@ -9,26 +9,37 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 public class Config {
   private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
+  private static final ForgeConfigSpec.BooleanValue CACTUS_CONFIG = BUILDER
+      .comment("Can cactus be bonemealed?")
+      .define("cactus", true);
+  public static boolean CACTUS_ENABLED;
+  private static final ForgeConfigSpec.IntValue CACTUS_HEIGHT_CONFIG = BUILDER
+      .comment("Maximum height that cactus can grow when bonemealed.")
+      .defineInRange("cactus_height", 7, 3, 256);
+  public static int CACTUS_HEIGHT;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
   public static boolean NETHER_WART_ENABLED;
 
-  private static final ForgeConfigSpec.BooleanValue SUGARCANE_CONFIG = BUILDER
-      .comment("Can sugarcane be bonemealed?")
-      .define("sugarcane", true);
-  public static boolean SUGARCANE_ENABLED;
-  private static final ForgeConfigSpec.IntValue SUGARCANE_HEIGHT_CONFIG = BUILDER
-      .comment("Maximum height that sugarcane can grow.")
-      .defineInRange("sugarcane_height", 7, 3, 256);
-  public static int SUGARCANE_HEIGHT;
+  private static final ForgeConfigSpec.BooleanValue SUGAR_CANE_CONFIG = BUILDER
+      .comment("Can sugar cane be bonemealed?")
+      .define("sugar_cane", true);
+  public static boolean SUGAR_CANE_ENABLED;
+  private static final ForgeConfigSpec.IntValue SUGAR_CANE_HEIGHT_CONFIG = BUILDER
+      .comment("Maximum height that sugar cane can grow when bonemealed.")
+      .defineInRange("sugar_cane_height", 7, 3, 256);
+  public static int SUGAR_CANE_HEIGHT;
 
   static final ForgeConfigSpec SPEC = BUILDER.build();
 
   @SubscribeEvent
   static void onLoad(final ModConfigEvent event) {
+    CACTUS_ENABLED = CACTUS_CONFIG.get();
+    CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
-    SUGARCANE_ENABLED = SUGARCANE_CONFIG.get();
-    SUGARCANE_HEIGHT = SUGARCANE_HEIGHT_CONFIG.get();
+    SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
+    SUGAR_CANE_HEIGHT = SUGAR_CANE_HEIGHT_CONFIG.get();
   }
 }
