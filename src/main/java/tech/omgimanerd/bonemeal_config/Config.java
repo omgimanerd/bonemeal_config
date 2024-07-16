@@ -13,6 +13,10 @@ public class Config {
       .comment("Can cactus be bonemealed?")
       .define("cactus", true);
   public static boolean CACTUS_ENABLED;
+  private static final ForgeConfigSpec.IntValue CACTUS_GROWTH_CONFIG = BUILDER
+      .comment("Maximum amount that cactus can grow per bonemeal.")
+      .defineInRange("cactus_growth", 3, 1, 10);
+  public static int CACTUS_GROWTH;
   private static final ForgeConfigSpec.IntValue CACTUS_HEIGHT_CONFIG = BUILDER
       .comment("Maximum height that cactus can grow when bonemealed.")
       .defineInRange("cactus_height", 7, 3, 256);
@@ -28,7 +32,7 @@ public class Config {
       .define("sugar_cane", true);
   public static boolean SUGAR_CANE_ENABLED;
   private static final ForgeConfigSpec.IntValue SUGAR_CANE_GROWTH_CONFIG = BUILDER
-      .comment("Maximum amount that the sugar cane can grow per bonemeal.")
+      .comment("Maximum amount that sugar cane can grow per bonemeal.")
       .defineInRange("sugar_cane_growth", 3, 1, 10);
   public static int SUGAR_CANE_GROWTH;
   private static final ForgeConfigSpec.IntValue SUGAR_CANE_HEIGHT_CONFIG = BUILDER
@@ -41,6 +45,7 @@ public class Config {
   @SubscribeEvent
   static void onLoad(final ModConfigEvent event) {
     CACTUS_ENABLED = CACTUS_CONFIG.get();
+    CACTUS_GROWTH = CACTUS_GROWTH_CONFIG.get();
     CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
