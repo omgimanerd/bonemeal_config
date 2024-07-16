@@ -27,6 +27,10 @@ public class Config {
       .comment("Can sugar cane be bonemealed?")
       .define("sugar_cane", true);
   public static boolean SUGAR_CANE_ENABLED;
+  private static final ForgeConfigSpec.IntValue SUGAR_CANE_GROWTH_CONFIG = BUILDER
+      .comment("Maximum amount that the sugar cane can grow per bonemeal.")
+      .defineInRange("sugar_cane_growth", 3, 1, 10);
+  public static int SUGAR_CANE_GROWTH;
   private static final ForgeConfigSpec.IntValue SUGAR_CANE_HEIGHT_CONFIG = BUILDER
       .comment("Maximum height that sugar cane can grow when bonemealed.")
       .defineInRange("sugar_cane_height", 7, 3, 256);
@@ -40,6 +44,7 @@ public class Config {
     CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
+    SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
     SUGAR_CANE_HEIGHT = SUGAR_CANE_HEIGHT_CONFIG.get();
   }
 }
