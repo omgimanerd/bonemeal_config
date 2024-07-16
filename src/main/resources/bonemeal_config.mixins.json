@@ -6,6 +6,7 @@
   "refmap": "bonemeal_config.refmap.json",
   "mixins": [
     "CactusBlockMixin",
+    "ChorusFlowerBlockMixin",
     "NetherWartBlockMixin",
     "SugarCaneBlockMixin"
   ]

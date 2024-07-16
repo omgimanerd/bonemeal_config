@@ -22,6 +22,11 @@ public class Config {
       .defineInRange("cactus_height", 7, 3, 256);
   public static int CACTUS_HEIGHT;
 
+  private static final ForgeConfigSpec.BooleanValue CHORUS_FLOWER_CONFIG = BUILDER
+      .comment("Can chorus flowers be bonemealed?")
+      .define("chorus_flower", true);
+  public static boolean CHORUS_FLOWER_ENABLED;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
@@ -47,6 +52,7 @@ public class Config {
     CACTUS_ENABLED = CACTUS_CONFIG.get();
     CACTUS_GROWTH = CACTUS_GROWTH_CONFIG.get();
     CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
+    CHORUS_FLOWER_ENABLED = CHORUS_FLOWER_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
     SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
