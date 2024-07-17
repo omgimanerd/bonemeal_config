@@ -22,10 +22,18 @@ public class Config {
       .defineInRange("cactus_height", 7, 3, 256);
   public static int CACTUS_HEIGHT;
 
-  private static final ForgeConfigSpec.BooleanValue CHORUS_FLOWER_CONFIG = BUILDER
-      .comment("Can chorus flowers be bonemealed?")
-      .define("chorus_flower", true);
-  public static boolean CHORUS_FLOWER_ENABLED;
+  private static final ForgeConfigSpec.BooleanValue CHORUS_CONFIG = BUILDER
+      .comment("Can chorus flowers and plants be bonemealed?")
+      .define("chorus", true);
+  public static boolean CHORUS_ENABLED;
+  private static final ForgeConfigSpec.DoubleValue CHORUS_CHANCE_CONFIG = BUILDER
+      .comment("Chance to grow a flower on each bonemeal.")
+      .defineInRange("chorus_chance", 0.4, 0, 1);
+  public static double CHORUS_CHANCE;
+  private static final ForgeConfigSpec.IntValue CHORUS_SIZE_CONFIG = BUILDER
+      .comment("Maximum size in blocks that the chorus plant can grow to with bonemeal.")
+      .defineInRange("chorus_size", 64, 0, 256);
+  public static int CHORUS_SIZE;
 
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
@@ -52,7 +60,9 @@ public class Config {
     CACTUS_ENABLED = CACTUS_CONFIG.get();
     CACTUS_GROWTH = CACTUS_GROWTH_CONFIG.get();
     CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
-    CHORUS_FLOWER_ENABLED = CHORUS_FLOWER_CONFIG.get();
+    CHORUS_ENABLED = CHORUS_CONFIG.get();
+    CHORUS_CHANCE = CHORUS_CHANCE_CONFIG.get();
+    CHORUS_SIZE = CHORUS_SIZE_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
     SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
