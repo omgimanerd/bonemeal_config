@@ -50,10 +50,20 @@ public class Config {
       .define("flower", true);
   public static boolean FLOWER_ENABLED;
 
+  public static final ForgeConfigSpec.BooleanValue HANGING_ROOTS_CONFIG = BUILDER
+      .comment("Can hanging roots be bonemealed?")
+      .define("hanging_roots", true);
+  public static boolean HANGING_ROOTS_ENABLED;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
   public static boolean NETHER_WART_ENABLED;
+
+  private static final ForgeConfigSpec.BooleanValue ROOTS_CONFIG = BUILDER
+      .comment("Can roots be bonemealed?")
+      .define("roots", true);
+  public static boolean ROOTS_ENABLED;
 
   private static final ForgeConfigSpec.BooleanValue SUGAR_CANE_CONFIG = BUILDER
       .comment("Can sugar cane be bonemealed?")
@@ -68,6 +78,11 @@ public class Config {
       .defineInRange("sugar_cane_height", 7, 3, 256);
   public static int SUGAR_CANE_HEIGHT;
 
+  private static final ForgeConfigSpec.BooleanValue WATERLILY_CONFIG = BUILDER
+      .comment("Can lilypads be bonemealed?")
+      .define("waterlily", true);
+  public static boolean WATERLILY_ENABLED;
+
   static final ForgeConfigSpec SPEC = BUILDER.build();
 
   @SubscribeEvent
@@ -81,9 +96,12 @@ public class Config {
     CHORUS_SIZE = CHORUS_SIZE_CONFIG.get();
     DEAD_BUSH_ENABLED = DEAD_BUSH_CONFIG.get();
     FLOWER_ENABLED = FLOWER_CONFIG.get();
+    HANGING_ROOTS_ENABLED = HANGING_ROOTS_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
+    ROOTS_ENABLED = ROOTS_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
     SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
     SUGAR_CANE_HEIGHT = SUGAR_CANE_HEIGHT_CONFIG.get();
+    WATERLILY_ENABLED = WATERLILY_CONFIG.get();
   }
 }
