@@ -35,6 +35,11 @@ public class Config {
       .defineInRange("chorus_size", 64, 0, 256);
   public static int CHORUS_SIZE;
 
+  private static final ForgeConfigSpec.BooleanValue CORAL_CONFIG = BUILDER
+      .comment("Can corals be bonemealed?")
+      .define("coral", true);
+  public static boolean CORAL_ENABLED;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
@@ -60,6 +65,7 @@ public class Config {
     CACTUS_ENABLED = CACTUS_CONFIG.get();
     CACTUS_GROWTH = CACTUS_GROWTH_CONFIG.get();
     CACTUS_HEIGHT = CACTUS_HEIGHT_CONFIG.get();
+    CORAL_ENABLED = CORAL_CONFIG.get();
     CHORUS_ENABLED = CHORUS_CONFIG.get();
     CHORUS_CHANCE = CHORUS_CHANCE_CONFIG.get();
     CHORUS_SIZE = CHORUS_SIZE_CONFIG.get();
