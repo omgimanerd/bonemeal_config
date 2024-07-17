@@ -2,8 +2,6 @@ package tech.omgimanerd.bonemeal_config.mixin;
 
 import javax.annotation.Nonnull;
 
-import org.spongepowered.asm.mixin.Implements;
-import org.spongepowered.asm.mixin.Interface;
 import org.spongepowered.asm.mixin.Mixin;
 
 import net.minecraft.core.BlockPos;
@@ -14,11 +12,9 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
-
 import tech.omgimanerd.bonemeal_config.Config;
 
 @Mixin(NetherWartBlock.class)
-@Implements(@Interface(iface = BonemealableBlock.class, prefix = "bonemealable$"))
 public class NetherWartBlockMixin implements BonemealableBlock {
 
   public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
