@@ -6,18 +6,24 @@
   "refmap": "bonemeal_config.refmap.json",
   "mixins": [
     "CactusBlockMixin",
+    "ChorusFlowerBlockMixin",
+    "ChorusPlantBlockMixin",
     "CoralBlockMixin",
     "CoralFanBlockMixin",
     "CoralPlantBlockMixin",
     "CoralWallFanBlockMixin",
-    "ChorusFlowerBlockMixin",
-    "ChorusPlantBlockMixin",
     "DeadBushBlockMixin",
     "FlowerBlockMixin",
     "HangingRootsBlockMixin",
+    "LeavesBlockMixin",
+    "MyceliumBlockMixin",
+    "NetherSproutsBlockMixin",
     "NetherWartBlockMixin",
     "RootsBlockMixin",
+    "SpongeBlockMixin",
+    "SporeBlossomBlockMixin",
     "SugarCaneBlockMixin",
+    "VineBlockMixin",
     "WaterlilyBlockMixin"
   ]
 }

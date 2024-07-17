@@ -55,15 +55,40 @@ public class Config {
       .define("hanging_roots", true);
   public static boolean HANGING_ROOTS_ENABLED;
 
+  private static final ForgeConfigSpec.BooleanValue LEAVES_CONFIG = BUILDER
+      .comment("Can leaves be bonemealed?")
+      .define("leaves", false);
+  public static boolean LEAVES_ENABLED;
+
+  private static final ForgeConfigSpec.BooleanValue MYCELIUM_CONFIG = BUILDER
+      .comment("Can mycelium be bonemealed?")
+      .define("mycelium", true);
+  public static boolean MYCELIUM_ENABLED;
+
+  private static final ForgeConfigSpec.BooleanValue NETHER_SPROUTS_CONFIG = BUILDER
+      .comment("Can nether sprouts be bonemealed?")
+      .define("sprouts", true);
+  public static boolean NETHER_SPROUTS_ENABLED;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
   public static boolean NETHER_WART_ENABLED;
 
   private static final ForgeConfigSpec.BooleanValue ROOTS_CONFIG = BUILDER
-      .comment("Can roots be bonemealed?")
+      .comment("Can warped/nylium roots be bonemealed?")
       .define("roots", true);
   public static boolean ROOTS_ENABLED;
+
+  private static final ForgeConfigSpec.BooleanValue SPONGE_CONFIG = BUILDER
+      .comment("Can sponges be bonemealed?")
+      .define("sponge", false);
+  public static boolean SPONGE_ENABLED;
+
+  private static final ForgeConfigSpec.BooleanValue SPORE_BLOSSOM_CONFIG = BUILDER
+      .comment("Can spore blossoms be bonemealed?")
+      .define("spore_blossom", true);
+  public static boolean SPORE_BLOSSOM_ENABLED;
 
   private static final ForgeConfigSpec.BooleanValue SUGAR_CANE_CONFIG = BUILDER
       .comment("Can sugar cane be bonemealed?")
@@ -77,6 +102,11 @@ public class Config {
       .comment("Maximum height that sugar cane can grow when bonemealed.")
       .defineInRange("sugar_cane_height", 7, 3, 256);
   public static int SUGAR_CANE_HEIGHT;
+
+  private static final ForgeConfigSpec.BooleanValue VINE_CONFIG = BUILDER
+      .comment("Can vines be bonemealed?")
+      .define("vine", true);
+  public static boolean VINE_ENABLED;
 
   private static final ForgeConfigSpec.BooleanValue WATERLILY_CONFIG = BUILDER
       .comment("Can lilypads be bonemealed?")
@@ -97,11 +127,17 @@ public class Config {
     DEAD_BUSH_ENABLED = DEAD_BUSH_CONFIG.get();
     FLOWER_ENABLED = FLOWER_CONFIG.get();
     HANGING_ROOTS_ENABLED = HANGING_ROOTS_CONFIG.get();
+    LEAVES_ENABLED = LEAVES_CONFIG.get();
+    MYCELIUM_ENABLED = MYCELIUM_CONFIG.get();
+    NETHER_SPROUTS_ENABLED = NETHER_SPROUTS_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     ROOTS_ENABLED = ROOTS_CONFIG.get();
+    SPONGE_ENABLED = SPONGE_CONFIG.get();
+    SPORE_BLOSSOM_ENABLED = SPORE_BLOSSOM_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
     SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
     SUGAR_CANE_HEIGHT = SUGAR_CANE_HEIGHT_CONFIG.get();
+    VINE_ENABLED = VINE_CONFIG.get();
     WATERLILY_ENABLED = WATERLILY_CONFIG.get();
   }
 }
