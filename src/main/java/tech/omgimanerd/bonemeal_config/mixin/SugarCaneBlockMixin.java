@@ -19,18 +19,18 @@ import tech.omgimanerd.bonemeal_config.util.BlockUtils;
 @Mixin(SugarCaneBlock.class)
 public class SugarCaneBlockMixin implements BonemealableBlock {
 
-  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
+      @Nonnull BlockState blockState, boolean isClient) {
     return Config.SUGAR_CANE_ENABLED;
   }
 
-  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState, boolean isClient) {
+  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     return BlockUtils.getCropHeight(level, pos, SugarCaneBlock.class) < Config.SUGAR_CANE_HEIGHT;
   }
 
-  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     int height = BlockUtils.getCropHeight(level, pos, SugarCaneBlock.class);
     int growth = Math.min(Config.SUGAR_CANE_HEIGHT - height,
         random.nextIntBetweenInclusive(1, Config.SUGAR_CANE_GROWTH));

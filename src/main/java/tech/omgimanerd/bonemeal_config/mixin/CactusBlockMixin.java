@@ -19,18 +19,18 @@ import tech.omgimanerd.bonemeal_config.util.BlockUtils;
 @Mixin(CactusBlock.class)
 public class CactusBlockMixin implements BonemealableBlock {
 
-  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
+      @Nonnull BlockState blockState, boolean isClient) {
     return Config.CACTUS_ENABLED;
   }
 
-  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState, boolean isClient) {
+  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     return BlockUtils.getCropHeight(level, pos, CactusBlock.class) < Config.CACTUS_HEIGHT;
   }
 
-  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     int height = BlockUtils.getCropHeight(level, pos, CactusBlock.class);
     int growth = Math.min(Config.CACTUS_HEIGHT - height,
         random.nextIntBetweenInclusive(1, Config.CACTUS_GROWTH));

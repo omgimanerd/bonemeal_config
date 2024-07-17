@@ -12,6 +12,7 @@
     "CoralWallFanBlockMixin",
     "ChorusFlowerBlockMixin",
     "ChorusPlantBlockMixin",
+    "DeadBushBlockMixin",
     "NetherWartBlockMixin",
     "SugarCaneBlockMixin"
   ]

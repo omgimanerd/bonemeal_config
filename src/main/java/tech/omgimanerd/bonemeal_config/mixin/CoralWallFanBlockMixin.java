@@ -27,19 +27,18 @@ public class CoralWallFanBlockMixin extends Block implements BonemealableBlock {
     super(p);
   }
 
-  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
+      @Nonnull BlockState blockState, boolean isClient) {
     return Config.CORAL_ENABLED;
   }
 
-  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState, boolean isClient) {
+  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     return !blockState.getBlock().equals(this.deadBlock);
   }
 
-  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     popResource(level, pos, new ItemStack(this));
   }
-
 }

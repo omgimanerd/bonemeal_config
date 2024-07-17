@@ -18,21 +18,21 @@ import tech.omgimanerd.bonemeal_config.util.ChorusPlantTraverser;
 @Mixin(ChorusFlowerBlock.class)
 public class ChorusFlowerBlockMixin implements BonemealableBlock {
 
-  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
+      @Nonnull BlockState blockState, boolean isClient) {
     return Config.CHORUS_ENABLED;
   }
 
-  public boolean isValidBonemealTarget(@Nonnull LevelReader level, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState, boolean isClient) {
+  public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     ChorusPlantTraverser t = new ChorusPlantTraverser(level);
     int plantSize = BlockPos.breadthFirstTraversal(
         pos, /* depth */ Integer.MAX_VALUE, /* visitLimit */ Integer.MAX_VALUE, t::consumer, t::predicate);
     return plantSize < Config.CHORUS_SIZE;
   }
 
-  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random, @Nonnull BlockPos pos,
-      @Nonnull BlockState blockState) {
+  public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
+      @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
     if (random.nextDouble() >= Config.CHORUS_CHANCE) {
       return;
     }
