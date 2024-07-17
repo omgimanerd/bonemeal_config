@@ -13,6 +13,7 @@
     "ChorusFlowerBlockMixin",
     "ChorusPlantBlockMixin",
     "DeadBushBlockMixin",
+    "FlowerBlockMixin",
     "NetherWartBlockMixin",
     "SugarCaneBlockMixin"
   ]

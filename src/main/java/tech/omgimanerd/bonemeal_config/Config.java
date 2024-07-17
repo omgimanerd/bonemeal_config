@@ -45,6 +45,11 @@ public class Config {
       .define("dead_bush", false);
   public static boolean DEAD_BUSH_ENABLED;
 
+  private static final ForgeConfigSpec.BooleanValue FLOWER_CONFIG = BUILDER
+      .comment("Can small flowers be bonemealed?")
+      .define("flower", true);
+  public static boolean FLOWER_ENABLED;
+
   private static final ForgeConfigSpec.BooleanValue NETHER_WART_CONFIG = BUILDER
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
@@ -75,6 +80,7 @@ public class Config {
     CHORUS_CHANCE = CHORUS_CHANCE_CONFIG.get();
     CHORUS_SIZE = CHORUS_SIZE_CONFIG.get();
     DEAD_BUSH_ENABLED = DEAD_BUSH_CONFIG.get();
+    FLOWER_ENABLED = FLOWER_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
     SUGAR_CANE_ENABLED = SUGAR_CANE_CONFIG.get();
     SUGAR_CANE_GROWTH = SUGAR_CANE_GROWTH_CONFIG.get();
