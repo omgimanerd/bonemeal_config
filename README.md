@@ -47,3 +47,7 @@ sprinker, Ars Nouveau grow spell).
 
 ## Author
 omgimanerd
+
+With credit to [Pepperoni-Jabroni](https://github.com/Pepperoni-Jabroni) for
+implementing a similar mod [CompleteBonemeal](https://github.com/Pepperoni-Jabroni/CompleteBoneMeal)
+from which I took inspiration for most of the behavior.
