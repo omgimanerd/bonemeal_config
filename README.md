@@ -28,7 +28,22 @@ sprinker, Ars Nouveau grow spell).
 - Water Lilies
 
 ## Examples
-| <img src="assets/bonemeal1.gif" height="250" /> | <img src="assets/bonemeal2.gif" height="250" /> | <img src="assets/bonemeal3.gif" height="250" /> |
+<table border='1'>
+  <tr>
+    <td>
+      <img src="https://github.com/omgimanerd/bonemeal_config/blob/master/assets/bonemeal1.gif?raw=true"
+           height="250" />
+    </td>
+    <td>
+      <img src="https://github.com/omgimanerd/bonemeal_config/blob/master/assets/bonemeal2.gif?raw=true"
+           height="250" />
+    </td>
+    <td>
+      <img src="https://github.com/omgimanerd/bonemeal_config/blob/master/assets/bonemeal3.gif?raw=true"
+           height="250" />
+    </td>
+  </tr>
+</table>
 
 ## Author
 omgimanerd
