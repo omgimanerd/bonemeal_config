@@ -19,12 +19,13 @@ public class NetherWartBlockMixin implements BonemealableBlock {
 
   public boolean isValidBonemealTarget(@Nonnull LevelReader reader, @Nonnull BlockPos pos,
       @Nonnull BlockState blockState, boolean isClient) {
-    return Config.NETHER_WART_ENABLED;
+    // A fully growth nether wart plant is not bonemealable.
+    return Config.NETHER_WART_ENABLED && blockState.getValue(NetherWartBlock.AGE) < NetherWartBlock.MAX_AGE;
   }
 
   public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
       @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
-    return random.nextDouble() <= Config.NETHER_WART_CHANCE && blockState.getValue(NetherWartBlock.AGE) < 3;
+    return random.nextDouble() < Config.NETHER_WART_CHANCE;
   }
 
   public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
