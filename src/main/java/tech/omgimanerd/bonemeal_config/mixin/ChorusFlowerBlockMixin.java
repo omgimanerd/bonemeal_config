@@ -25,18 +25,15 @@ public class ChorusFlowerBlockMixin implements BonemealableBlock {
 
   public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
       @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
-    ChorusPlantTraverser t = new ChorusPlantTraverser(level);
-    int plantSize = BlockPos.breadthFirstTraversal(
-        pos, /* depth */ Integer.MAX_VALUE, /* visitLimit */ Integer.MAX_VALUE, t::consumer, t::predicate);
-    return plantSize < Config.CHORUS_SIZE;
+    ChorusPlantTraverser t = new ChorusPlantTraverser(level, pos).traverse();
+    // If the chorus plant has reached maximum size, it is still a valid bonemeal
+    // target, but no growth will happen.
+    return t.plantSize < Config.CHORUS_SIZE && random.nextDouble() < Config.CHORUS_CHANCE;
   }
 
   public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,
       @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
-    if (random.nextDouble() >= Config.CHORUS_CHANCE) {
-      return;
-    }
-    ChorusFlowerBlock.generatePlant(level, pos, random, 5);
+    ChorusFlowerBlock.generatePlant(level, pos, random, /* maxHorizontalDistance */5);
   }
 
 }

@@ -12,13 +12,18 @@ import net.minecraft.world.level.block.ChorusPlantBlock;
 
 public class ChorusPlantTraverser {
 
+  private static int MAX_DEPTH = 256;
+
   public ArrayList<BlockPos> flowerLocations;
+  public int plantSize;
 
   private LevelReader level;
+  private BlockPos startPos;
 
-  public ChorusPlantTraverser(LevelReader level) {
+  public ChorusPlantTraverser(LevelReader level, BlockPos startPos) {
     this.flowerLocations = new ArrayList<>();
     this.level = level;
+    this.startPos = startPos;
   }
 
   public boolean predicate(BlockPos pos) {
@@ -38,4 +43,9 @@ public class ChorusPlantTraverser {
     }
   }
 
+  public ChorusPlantTraverser traverse() {
+    plantSize = BlockPos.breadthFirstTraversal(startPos, /* depth */MAX_DEPTH, /* visitLimit */MAX_DEPTH,
+        this::consumer, this::predicate);
+    return this;
+  }
 }
