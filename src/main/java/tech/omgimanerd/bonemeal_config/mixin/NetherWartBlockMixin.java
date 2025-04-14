@@ -24,7 +24,7 @@ public class NetherWartBlockMixin implements BonemealableBlock {
 
   public boolean isBonemealSuccess(@Nonnull Level level, @Nonnull RandomSource random,
       @Nonnull BlockPos pos, @Nonnull BlockState blockState) {
-    return blockState.getValue(NetherWartBlock.AGE) < 3;
+    return random.nextDouble() <= Config.NETHER_WART_CHANCE && blockState.getValue(NetherWartBlock.AGE) < 3;
   }
 
   public void performBonemeal(@Nonnull ServerLevel level, @Nonnull RandomSource random,

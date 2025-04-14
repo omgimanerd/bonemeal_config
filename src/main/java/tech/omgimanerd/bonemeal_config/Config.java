@@ -27,7 +27,7 @@ public class Config {
       .define("chorus", true);
   public static boolean CHORUS_ENABLED;
   private static final ForgeConfigSpec.DoubleValue CHORUS_CHANCE_CONFIG = BUILDER
-      .comment("Chance to grow a flower on each bonemeal.")
+      .comment("Chance to grow the chorus plant on each bonemeal.")
       .defineInRange("chorus_chance", 0.4, 0, 1);
   public static double CHORUS_CHANCE;
   private static final ForgeConfigSpec.IntValue CHORUS_SIZE_CONFIG = BUILDER
@@ -74,6 +74,10 @@ public class Config {
       .comment("Can nether wart be bonemealed?")
       .define("nether_wart", true);
   public static boolean NETHER_WART_ENABLED;
+  private static final ForgeConfigSpec.DoubleValue NETHER_WART_CHANCE_CONFIG = BUILDER
+      .comment("Chance to advance the growth stage of nether wart per bonemeal.")
+      .defineInRange("nether_wart_chance", 0.4, 0, 1);
+  public static double NETHER_WART_CHANCE;
 
   private static final ForgeConfigSpec.BooleanValue ROOTS_CONFIG = BUILDER
       .comment("Can warped/nylium roots be bonemealed?")
@@ -131,6 +135,7 @@ public class Config {
     MYCELIUM_ENABLED = MYCELIUM_CONFIG.get();
     NETHER_SPROUTS_ENABLED = NETHER_SPROUTS_CONFIG.get();
     NETHER_WART_ENABLED = NETHER_WART_CONFIG.get();
+    NETHER_WART_CHANCE = NETHER_WART_CHANCE_CONFIG.get();
     ROOTS_ENABLED = ROOTS_CONFIG.get();
     SPONGE_ENABLED = SPONGE_CONFIG.get();
     SPORE_BLOSSOM_ENABLED = SPORE_BLOSSOM_CONFIG.get();
