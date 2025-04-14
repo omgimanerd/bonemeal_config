@@ -34,9 +34,6 @@ public class CactusBlockMixin implements BonemealableBlock {
     int height = BlockUtils.getCropHeight(level, pos, CactusBlock.class);
     int growth = Math.min(Config.CACTUS_HEIGHT - height,
         random.nextIntBetweenInclusive(1, Config.CACTUS_GROWTH));
-    BlockPos top = BlockUtils.getTopCropBlock(level, pos, CactusBlock.class);
-    for (int i = 0; i < growth; ++i, top = top.above()) {
-      level.setBlockAndUpdate(top.above(), Blocks.CACTUS.defaultBlockState());
-    }
+    BlockUtils.growIfEmpty(level, pos, Blocks.CACTUS, growth);
   }
 }

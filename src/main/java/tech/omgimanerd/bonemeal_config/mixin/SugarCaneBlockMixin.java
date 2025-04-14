@@ -34,10 +34,7 @@ public class SugarCaneBlockMixin implements BonemealableBlock {
     int height = BlockUtils.getCropHeight(level, pos, SugarCaneBlock.class);
     int growth = Math.min(Config.SUGAR_CANE_HEIGHT - height,
         random.nextIntBetweenInclusive(1, Config.SUGAR_CANE_GROWTH));
-    BlockPos top = BlockUtils.getTopCropBlock(level, pos, SugarCaneBlock.class);
-    for (int i = 0; i < growth; ++i, top = top.above()) {
-      level.setBlockAndUpdate(top.above(), Blocks.SUGAR_CANE.defaultBlockState());
-    }
+    BlockUtils.growIfEmpty(level, pos, Blocks.SUGAR_CANE, growth);
   }
 
 }
